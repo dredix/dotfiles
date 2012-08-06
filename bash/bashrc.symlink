@@ -82,18 +82,18 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+# if [ -f ~/.bash_aliases ]; then
+#     . ~/.bash_aliases
+# fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -101,3 +101,17 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# Aliases
+FILES="$FILES $HOME/.dotfiles/bash/aliases"
+# Functions
+FILES="$FILES $HOME/.dotfiles/bash/functions"
+# Custom Bash prompt
+FILES="$FILES $HOME/.dotfiles/bash/bash_prompt"
+
+# Source all readable files in FILES
+for file in $FILES
+do
+    [ -r "$file" ] && source "$file"
+done
+
