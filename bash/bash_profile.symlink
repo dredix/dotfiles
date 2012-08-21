@@ -10,8 +10,8 @@ FILES="$FILES $HOME/.dotfiles/bash/aliases"
 FILES="$FILES $HOME/.dotfiles/bash/functions"
 # Custom Bash prompt
 FILES="$FILES $HOME/.dotfiles/bash/bash_prompt"
-# SSH Agent
-FILES="$FILES $HOME/.dotfiles/bash/sshagent"
+# # SSH Agent
+# FILES="$FILES $HOME/.dotfiles/bash/sshagent"
 
 # Source all readable files in FILES
 for file in $FILES
