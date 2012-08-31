@@ -1,3 +1,8 @@
+" ====================================================================
+" Vim configuration file.
+" Most settings were copied from Steve Losh's post: Coming Home to Vim
+" http://stevelosh.com/blog/2010/09/coming-home-to-vim/
+" ====================================================================
 call pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -66,20 +71,30 @@ nnoremap ; :
 
 " au FocusLost * :wa
 
+" strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>a :Ack
+" fold tag on HTML files
 nnoremap <leader>ft Vatzf
+" Sort CSS properties
 nnoremap <leader>S {<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+" re-hardwrap paragraphs of text, Textmate style.
 nnoremap <leader>q gqip
+" reselect the text that was just pasted
 nnoremap <leader>v V`]
+" quickly open up ~/.vimrc file in a vertically split window
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-
+" a faster way to go back to normal mode.
 inoremap jj <ESC>
 
+" open a vertically split window and switch to it
 nnoremap <leader>wv <C-w>v<C-w>l
+" close the current split. 
 nnoremap <leader>wq <C-w>q
+" switch to another split. Less useful if combined with MiniBufExplorer.
 nnoremap <leader>ww <C-w>w
 
+" navigation between splits.
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -87,13 +102,13 @@ nnoremap <C-l> <C-w>l
 
 " Mappings to access buffers (don't use "\p" because a
 " delay before pressing "p" would accidentally paste).
-" \l       : list buffers
-" \b \f \g : go back/forward/last-used
-" \1 \2 \3 : go to buffer 1/2/3 etc
+" ,l       : list buffers
 nnoremap <Leader>l :ls<CR>
+" ,b ,f ,g : go back/forward/last-used
 nnoremap <Leader>b :bp<CR>
 nnoremap <Leader>f :bn<CR>
 nnoremap <Leader>g :e#<CR>
+" ,1 ,2 ,3 : go to buffer 1/2/3 etc
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
 nnoremap <Leader>3 :3b<CR>
@@ -108,7 +123,10 @@ nnoremap <Leader>0 :10b<CR>
 " It's useful to show the buffer number in the status line.
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
-nnoremap <leader>E :NERDTree<CR>
+nnoremap <leader>Et :NERDTree<CR>
+" Spell checking options
+nnoremap <leader>Es :setlocal spell spelllang=en_au<CR>
+nnoremap <leader>En :setlocal nospell<CR>
 
 " " open a NERDTree automatically when vim starts up
 " autocmd vimenter * NERDTree
